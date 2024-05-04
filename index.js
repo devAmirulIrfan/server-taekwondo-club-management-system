@@ -3,12 +3,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const PORT = 8080
+const cors = require('cors');
 require('dotenv').config()
 
 
 const supabase = createClient(process.env.DATABASE_URL, process.env.DATABASE_KEY)
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get("/centerMetadata", async (_, response) => {
     try {
